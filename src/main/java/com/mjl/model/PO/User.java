@@ -1,7 +1,8 @@
-package com.mjl.model;
+package com.mjl.model.PO;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Alvin on 15/10/4.
@@ -21,7 +22,7 @@ public class User implements Serializable {
 
     private int userId;
     private String userName;
-    private String password;
+    private String passWord;
     private String userEmail;
     private String userSex;
     private Timestamp createTime;
@@ -34,6 +35,15 @@ public class User implements Serializable {
     /*
     用户表与论坛板块表相联,并且是多对多
      */
+    private List<Board> boards;
+
+    public List<Board> getBoards() {
+        return boards;
+    }
+
+    public void setBoards(List<Board> boards) {
+        this.boards = boards;
+    }
 
     public int getUserId() {
         return userId;
@@ -51,12 +61,12 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getUserEmail() {
@@ -121,5 +131,23 @@ public class User implements Serializable {
 
     public void setLastIp(String lastIp) {
         this.lastIp = lastIp;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userSex='" + userSex + '\'' +
+                ", createTime=" + createTime +
+                ", userType=" + userType +
+                ", userState=" + userState +
+                ", credit=" + credit +
+                ", lastLoginTime=" + lastLoginTime +
+                ", lastIp='" + lastIp + '\'' +
+                ", boards=" + boards +
+                '}';
     }
 }

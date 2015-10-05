@@ -30,8 +30,13 @@ PRIMARY KEY  (`board_id`)
 CREATE TABLE IF NOT EXISTS t_board_manager(
 board_id INT(10) NOT NULL,
 user_id INT(10) NOT NULL,
-PRIMARY KEY  (`board_id`)
+KEY `FK_user_board_user_id` (`user_id`),
+KEY `FK_user_board_board_id` (`board_id`),
+CONSTRAINT `FK_user_board_board_id` FOREIGN KEY (`board_id`) REFERENCES `t_board`(`board_id`),
+CONSTRAINT `FK_user_board_user_id` FOREIGN KEY (`user_id`) REFERENCES `t_user`(`user_id`)
 )ENGINE=InnoDB  DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+
 
 #帖子表
 CREATE TABLE IF NOT EXISTS t_post(

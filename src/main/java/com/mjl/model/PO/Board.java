@@ -1,6 +1,7 @@
-package com.mjl.model;
+package com.mjl.model.PO;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Alvin on 15/10/4.
@@ -10,6 +11,19 @@ public class Board implements Serializable {
     private String boardName;
     private String boadrDesc;
     private int topicNum;
+
+    /*
+    由于board与user是多对多对应关系
+     */
+    private List<User> users;
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     public String getBoardName() {
         return boardName;
