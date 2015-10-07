@@ -1,5 +1,33 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Avlin
+  Date: 15/10/7
+  Time: 下午8:55
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
+<head>
+<title>疾风论坛</title>
+</head>
 <body>
-<h2>Hello World!</h2>
+<div>
+    <div>
+    疾风论坛
+    </div>
+    <div>
+        
+    </div>
+</div>
+
 </body>
 </html>
+
+
+
+
+

@@ -32,18 +32,9 @@ public class User implements Serializable {
     private Timestamp lastLoginTime;
     private String lastIp;
 
-    /*
-    用户表与论坛板块表相联,并且是多对多
-     */
-    private List<Board> boards;
 
-    public List<Board> getBoards() {
-        return boards;
-    }
 
-    public void setBoards(List<Board> boards) {
-        this.boards = boards;
-    }
+
 
     public int getUserId() {
         return userId;
@@ -147,7 +138,7 @@ public class User implements Serializable {
                 ", credit=" + credit +
                 ", lastLoginTime=" + lastLoginTime +
                 ", lastIp='" + lastIp + '\'' +
-                ", boards=" + boards +
+
                 '}';
     }
 }

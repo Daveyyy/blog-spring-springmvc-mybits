@@ -22,7 +22,7 @@
     <!--扫描控制器,当配置了它后,Spring会自动的到com.mjl.controller
     下扫描带有@controller @service @component等注解等类,将他们自动实例化-->
     <!--  扫描文件(自动将service层注入)-->
-    <context:component-scan base-package="com.mjl.*">
+    <context:component-scan base-package="com.mjl.service">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
             </context:component-scan>
 
@@ -73,11 +73,11 @@
         <!--</property>-->
     </bean>
 
-    <bean id="UserDaoI" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <!--sqlSessionFactory属性指定要用到的SqlSessionFactory实例-->
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
         <!--mapperInterface属性指定映射器接口，用于实现此接口并生成映射器对象-->
-        <property name="mapperInterface" value="com.mjl.dao.UserDaoI" />
+        <property name="mapperInterface" value="com.mjl." />
     </bean>
 
     <!-- 创建数据映射器-->
