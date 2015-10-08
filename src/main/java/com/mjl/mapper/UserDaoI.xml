@@ -30,7 +30,7 @@
     <!--</resultMap>-->
 
     <sql id="user_columns">
-        user_id,user_name,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
+        user_id,user_name,password,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
     </sql>
 
 

@@ -30,7 +30,7 @@
     <!--</resultMap>-->
 
     <sql id="user_columns">
-        user_id,user_name,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
+        user_id,user_name,password,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
     </sql>
 
 
@@ -38,22 +38,85 @@
     <select id="findUserByUserName" parameterType="string" resultMap="userMap">
         SELECT
          <include refid="user_columns"/>
-         FROM t_user WHERE user_name=#{username}
+         FROM
+        t_user
+        WHERE
+        user_name=#{username}
     </select>
     <!--通过用户ID查找用户-->
     <select id="findUserByUserId" parameterType="int" resultType="com.mjl.model.PO.User">
-        SELECT * FROM t_user WHERE user_id=#{userId}
+        SELECT
+        <include refid="user_columns"/>
+        FROM
+        t_user
+        WHERE
+        user_id=#{userId}
     </select>
 
     <!--插入用户信息-->
     <insert id="addUser" parameterType="User" keyProperty="userId" useGeneratedKeys="true">
-        INSERT  INTO t_user(user_name,password,user_email,user_sex,create_time)
-        VALUES (#{userName},${passWord},#{userEmail},#{userSex},#{createTime})
+
+        INSERT  INTO t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName!=null">
+                user_name,
+            </if>
+            <if test="passWord!=null">
+                password,
+            </if>
+            <if test="userEmail!=null">
+                user_email,
+            </if>
+            <if test="userSex!=null">
+                user_sex,
+            </if>
+            <if test="createTime!=null">
+                create_time
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+          <if test="userName!=null">
+              #{userName,jdbcType=VARCHAR},
+         </if>
+         <if test="passWord!=null">
+             #{passWord,jdbcType=VARCHAR},
+         </if>
+          <if test="userEmail!=null">
+             #{userEmail,                                                                                                                     jdbcType=VARCHAR},
+          </if>
+           <if test="userSex!=null">
+             #{userSex,jdbcType=VARCHAR},
+          </if>
+         <if test="createTime!=null">
+            #{createTime,jdbcType=TIMESTAMP}
+          </if>
+    </trim>
     </insert>
 
+    <!--删除用户信息-->
     <delete id="deleteUserByUserName" parameterType="string">
-        DELETE FROM t_user WHERE user_name = #{userName}
+        DELETE FROM
+        t_user
+        WHERE
+        user_name = #{userName}
     </delete>
+
+    <update id="updateUserByUserName"  parameterType="User">
+        UPDATE t_user
+        SET
+        <if test="passWord != null and passWord != '' ">
+            password= #{passWord,jdbcType=VARCHAR},
+        </if>
+        <if test="userEmail != null and userEmail != '' ">
+            user_email=#{userEmail},
+        </if>
+        <if test="userSex != null and userSex != '' ">
+            user_sex=#{userSex}
+        </if>
+        WHERE
+        user_name=#{userName,jdbcType=VARCHAR}
+
+    </update>
 
 
 </mapper>

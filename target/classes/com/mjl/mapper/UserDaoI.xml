@@ -30,7 +30,7 @@
     <!--</resultMap>-->
 
     <sql id="user_columns">
-        user_id,user_name,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
+        user_id,user_name,password,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
     </sql>
 
 
@@ -82,7 +82,7 @@
              #{passWord,jdbcType=VARCHAR},
          </if>
           <if test="userEmail!=null">
-             #{userEmail,jdbcType=VARCHAR},
+             #{userEmail,                                                                                                                     jdbcType=VARCHAR},
           </if>
            <if test="userSex!=null">
              #{userSex,jdbcType=VARCHAR},
@@ -103,7 +103,7 @@
 
     <update id="updateUserByUserName"  parameterType="User">
         UPDATE t_user
-        <set>
+        SET
         <if test="passWord != null and passWord != '' ">
             password= #{passWord,jdbcType=VARCHAR},
         </if>
@@ -113,10 +113,9 @@
         <if test="userSex != null and userSex != '' ">
             user_sex=#{userSex}
         </if>
-        </set>
-        <where>
+        WHERE
         user_name=#{userName,jdbcType=VARCHAR}
-        </where>
+
     </update>
 
 

@@ -4,6 +4,7 @@ import com.mjl.model.PO.User;
 import com.mjl.service.UserSerivceI;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,17 +19,25 @@ public class UserController {
     @Resource
     UserSerivceI userSerivce;
 
-    @RequestMapping("/userlogin")
-    public String Userlogin(User user,HttpServletRequest request){
-        if(user != null && user.getUserName()!= ""){
-           User usertemp = userSerivce.getUserByUserName(user.getUserName());
-           if(usertemp != null && usertemp.getPassWord().equals(user.getPassWord())){
-                return "loginSuccess";
-           }
+//    @RequestMapping
+//    public String register(User user,HttpServletRequest request){
+//
+//    }
+
+
+    @RequestMapping(value = "/userlogin", method = RequestMethod.POST)
+    public String Userlogin(User user, HttpServletRequest request) {
+        if (user != null && user.getUserName() != "") {
+            System.out.println("ip--->"+request.getRemoteAddr());
+            User dbuser = userSerivce.getUserByUserName(user.getUserName());
+            if (dbuser != null && dbuser.getPassWord().equals(user.getPassWord())) {
+                request.getSession().setAttribute("userLoginMsg","用户登录成功!");
+                return "user/loginStatus";
+            }
         }
-
-        return "error";
-
-
+        request.getSession().setAttribute("userLoginMsg","登录失败!用户名或密码错误!");
+        return "user/loginStatus";
     }
+
+
 }

@@ -166,11 +166,11 @@
             </dependency>
 
             <!--pagehelper依赖,用于mybatis分页插件-->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>4.0.0</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.github.pagehelper</groupId>-->
+                <!--<artifactId>pagehelper</artifactId>-->
+                <!--<version>4.0.0</version>-->
+            <!--</dependency>-->
 
             <dependency>
                 <groupId>cglib</groupId>

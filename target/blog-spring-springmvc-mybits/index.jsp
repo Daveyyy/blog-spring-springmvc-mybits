@@ -15,16 +15,16 @@
 <title>疾风论坛</title>
 </head>
 <body>
-<div class="top-bar">
-
-    <p align="left">疾风论坛</p>
-       <p align="right">
-           <span >登录</span>
-        <span>注册</span>
-       </p>
+<div>
+    <div>
+    疾风论坛
     </div>
-
+    <div>
+        <span><a href="view/user/userlogin.jsp">登录</a></span>
+        <span><a href="">注册</a></span>
+    </div>
 </div>
+
 </body>
 </html>
 

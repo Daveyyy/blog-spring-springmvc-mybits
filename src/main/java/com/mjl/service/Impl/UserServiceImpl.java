@@ -27,6 +27,10 @@ public class UserServiceImpl implements UserSerivceI{
     }
 
     public User getUserByUserName(String userName) {
+        if(userName == null ){
+           return null;
+        }
+        return userMapper.findUserByUserName(userName);
 
     }
 

@@ -55,42 +55,26 @@
         <property name="mapperLocations" value="classpath*:com/mjl/mapper/*.xml"/>
 
 
-
-
-        <!--<property name="plugins">-->
-            <!--<array>-->
-                <!--<bean class="com.github.pagehelper.PageHelper">-->
-                    <!--<property name="properties">-->
-                            <!--<value>-->
-                                <!--dialect=mysql-->
-                                <!--reasonable=true-->
-                               <!--pageSizeZero=true-->
-                             <!--</value>-->
-
-                    <!--</property>-->
-                <!--</bean>-->
-            <!--</array>-->
-        <!--</property>-->
     </bean>
 
-    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <!--sqlSessionFactory属性指定要用到的SqlSessionFactory实例-->
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-        <!--mapperInterface属性指定映射器接口，用于实现此接口并生成映射器对象-->
-        <property name="mapperInterface" value="com.mjl." />
-    </bean>
+    <!--<bean id="UserDaoI" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+        <!--&lt;!&ndash;sqlSessionFactory属性指定要用到的SqlSessionFactory实例&ndash;&gt;-->
+        <!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
+        <!--&lt;!&ndash;mapperInterface属性指定映射器接口，用于实现此接口并生成映射器对象&ndash;&gt;-->
+        <!--<property name="mapperInterface" value="com.mjl.dao.UserDaoI" />-->
+    <!--</bean>-->
+
 
     <!-- 创建数据映射器-->
-    <!--<bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-          <!--<property name="basePackage" value="com.mjl.dao"/>-->
-
-    <!--</bean>-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mjl.dao"/>
+    </bean>
 
 
     <!-- 对数据源进行事务管理 -->
-    <!--<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--</bean>-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     <!--配置事务打传播特性 该事务打管理者为txManager 事务的隔离级别设置为REQUIRED则表示当前有事务就加入,没有则创建一个
     新的,SUPPORTS有则加入,无则没有事务隔离执行-->
         <!--<tx:advice id="userTxAdvice" transaction-manager="txManager">-->

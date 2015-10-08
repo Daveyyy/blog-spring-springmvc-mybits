@@ -32,8 +32,6 @@
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.2.2" />
-          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.0.0" />
-          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" />
           <element id="library" level="project" name="Maven: cglib:cglib:2.2" />
           <element id="library" level="project" name="Maven: asm:asm:3.1" />
         </element>

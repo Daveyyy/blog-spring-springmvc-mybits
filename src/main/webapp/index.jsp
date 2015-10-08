@@ -20,7 +20,8 @@
     疾风论坛
     </div>
     <div>
-        
+        <span><a href="view/user/userlogin.jsp">登录</a></span>
+        <span><a href="">注册</a></span>
     </div>
 </div>
 
