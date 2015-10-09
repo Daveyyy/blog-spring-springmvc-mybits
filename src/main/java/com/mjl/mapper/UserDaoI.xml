@@ -111,7 +111,19 @@
             user_email=#{userEmail},
         </if>
         <if test="userSex != null and userSex != '' ">
-            user_sex=#{userSex}
+            user_sex=#{userSex},
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            create_time=#{createTime},
+        </if>
+        <if test="credit != null and credit != '' ">
+            credit=#{credit},
+        </if>
+        <if test="lastLoginTime != null and lastLoginTime != '' ">
+            last_logintime=#{lastLoginTime},
+        </if>
+        <if test="lastIp != null and lastIp != '' ">
+            last_ip=#{lastIp}
         </if>
         WHERE
         user_name=#{userName,jdbcType=VARCHAR}

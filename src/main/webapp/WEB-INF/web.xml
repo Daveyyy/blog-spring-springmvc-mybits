@@ -50,10 +50,10 @@
 
 
 
-    <!--用于设定默认首页-->
-    <!--<welcome-file-list>-->
-        <!--<welcome-file>/view/User/login.jsp</welcome-file>-->
-    <!--</welcome-file-list>-->
+    用于设定默认首页
+    <welcome-file-list>
+        <welcome-file>/view/main.jsp</welcome-file>
+    </welcome-file-list>
 
 
 

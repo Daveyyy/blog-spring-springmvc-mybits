@@ -22,8 +22,10 @@ public class UserServiceImpl implements UserSerivceI{
         }
     }
 
-    public void updateUserByUser(User user) {
-
+    public void updateUserByUserName(User user) {
+            if(user != null){
+                userMapper.updateUserByUserName(user);
+            }
     }
 
     public User getUserByUserName(String userName) {
@@ -37,4 +39,10 @@ public class UserServiceImpl implements UserSerivceI{
     public void deleteUserByUserName(String userName) {
 
     }
+
+    public void loginSuccess(User user) {
+
+    }
+
+
 }

@@ -11,6 +11,7 @@
     <title></title>
 </head>
 <body>
-${userLoginMsg}
+${Msg}
+
 </body>
 </html>

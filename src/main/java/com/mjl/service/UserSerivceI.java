@@ -7,7 +7,8 @@ import com.mjl.model.PO.User;
  */
 public interface UserSerivceI {
     public void addUser(User user);
-    public void updateUserByUser(User user);
+    public void updateUserByUserName(User user);
     public User getUserByUserName(String userName);
     public void deleteUserByUserName(String userName);
+    public void loginSuccess(User user);
 }
