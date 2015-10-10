@@ -31,7 +31,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/userlogin", method = RequestMethod.POST)
-    public String Userlogin(User user, HttpServletRequest request) {
+    public String Userlogin(User user, HttpServletRequest request,RedirectAttributes redirectAttributes) {
         User dbuser = userSerivce.getUserByUserName(user.getUserName());
             if (dbuser != null && dbuser.getPassWord().equals(user.getPassWord())) {
                 dbuser.setLastIp(request.getRemoteAddr());
@@ -45,8 +45,9 @@ public class UserController {
                 request.getSession().setAttribute("username",dbuser.getUserName());
                 return "main";
             }
-        System.out.println("登录失败");
-        request.getSession().setAttribute("Msg","登录失败!");
+
+        request.getSession().setAttribute("Msg", "登录失败,用户名或密码错误!");
+
         return "user/loginStatus";
     }
 

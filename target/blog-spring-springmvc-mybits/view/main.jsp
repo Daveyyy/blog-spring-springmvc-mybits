@@ -37,7 +37,7 @@
         <a href="<%=basePath%>user/loginout.do"><button name="logout" >注销</button></a>
         </c:when>
         <c:when test="${username ==null}">
-        <span><a href="view/user/userlogin.jsp">登录</a></span>
+        <span><a href="<%=basePath%>view/user/userlogin.jsp">登录</a></span>
         <span><a href="">注册</a></span>
         </c:when>
     </c:choose>

@@ -12,6 +12,6 @@
 </head>
 <body>
 ${Msg}
-
+${MSG}
 </body>
 </html>
