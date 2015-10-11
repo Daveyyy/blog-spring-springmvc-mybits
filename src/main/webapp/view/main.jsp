@@ -27,22 +27,24 @@
     </script>
 <title>疾风论坛</title>
 </head>
-
-   <span>
-    疾风论坛
-    </span>
-    <c:choose>
-        <c:when test="${username !=null}">
-        ${username}
-        <a href="<%=basePath%>user/loginout.do"><button name="logout" >注销</button></a>
-        </c:when>
-        <c:when test="${username ==null}">
-        <span><a href="<%=basePath%>view/user/userlogin.jsp">登录</a></span>
-        <span><a href="">注册</a></span>
-        </c:when>
+<div>
+   <div align="center">
+       <h2>疾风论坛</h2>
+       </div>
+    <div align="right">
+     <c:choose>
+           <c:when test="${username !=null}">
+             欢迎回来:
+               <a href="<%=basePath%>user/listUserInfo.do?username=${username}"> <font color="red">${username}</font></a>
+              <a href="<%=basePath%>user/loginout.do"><button name="logout" >注销</button></a>
+             </c:when>
+             <c:when test="${username ==null}">
+               <font color="red">您还未登录!  </font>
+             <span><a href="<%=basePath%>view/user/userlogin.jsp">登录</a></span><span><a href="<%=basePath%>view/user/user_register.jsp">注册</a></span>
+             </c:when>
     </c:choose>
+    </div>
 </div>
-
 </body>
 </html>
 

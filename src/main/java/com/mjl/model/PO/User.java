@@ -16,13 +16,14 @@ public class User implements Serializable {
     /*
     表示用户类型 1为普通用户 2为管理员
      */
-    private static final int USER_ADMIN = 2;
-    private static final int USER_NORMAL = 1;
+    private static final int USER_ADMIN = 1;
+    private static final int USER_NORMAL = 0;
 
 
     private int userId;
     private String userName;
     private String passWord;
+    private String userPhone;
     private String userEmail;
     private String userSex;
     private Timestamp createTime;
@@ -32,6 +33,9 @@ public class User implements Serializable {
     private Timestamp lastLoginTime;
     private String lastIp;
 
+    /*
+    User与loginlog是一对多的关系
+     */
 
 
 
@@ -58,6 +62,14 @@ public class User implements Serializable {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
     public String getUserEmail() {
@@ -130,6 +142,7 @@ public class User implements Serializable {
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
+                ", userPhone='" + userPhone + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 ", userSex='" + userSex + '\'' +
                 ", createTime=" + createTime +
@@ -138,7 +151,6 @@ public class User implements Serializable {
                 ", credit=" + credit +
                 ", lastLoginTime=" + lastLoginTime +
                 ", lastIp='" + lastIp + '\'' +
-
                 '}';
     }
 }

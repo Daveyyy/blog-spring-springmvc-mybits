@@ -26,15 +26,15 @@ public class MybatisTest {
         System.out.println("获取前");
         UserDaoI mapper = (UserDaoI)ac.getBean("UserDaoI");
         System.out.println("获取后");
-//        User adduser1 =new User();
-//        adduser1.setUserName("test5");
-//        adduser1.setPassWord("1234");
-//        adduser1.setUserEmail("aaa@fsd.com");
-//        adduser1.setUserSex("男");
-//        adduser1.setCreateTime(new Timestamp(new Date().getTime()));
-//        mapper.updateUserByUserName(adduser1);
+        User adduser1 =new User();
+        adduser1.setUserName("test1");
+        adduser1.setPassWord("1234");
+        adduser1.setUserEmail("aaa@fsd.com");
+        adduser1.setUserSex("男");
+        adduser1.setCreateTime(new Timestamp(new Date().getTime()));
+        mapper.updateUserByUserName(adduser1);
 //        mapper.deleteUserByUserName("test3");
-        User user = mapper.findUserByUserName("test2");
+        User user = mapper.findUserByUserName("test1");
         if(user == null){
             System.out.println("error!!!");
         }

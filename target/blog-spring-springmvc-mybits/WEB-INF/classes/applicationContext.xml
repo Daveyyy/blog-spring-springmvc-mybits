@@ -61,7 +61,8 @@
         <!--&lt;!&ndash;sqlSessionFactory属性指定要用到的SqlSessionFactory实例&ndash;&gt;-->
         <!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
         <!--&lt;!&ndash;mapperInterface属性指定映射器接口，用于实现此接口并生成映射器对象&ndash;&gt;-->
-        <!--<property name="mapperInterface" value="com.mjl.dao.UserDaoI" />-->
+        <!--<property name="mapperInterface" value="com.mjl.dao.UserDaoI,com.mjl.dao" />-->
+        <!-- -->
     <!--</bean>-->
 
 
@@ -81,11 +82,12 @@
             <!--<tx:attributes>-->
                 <!--<tx:method name="delete*" propagation="REQUIRED" read-only="false"-->
                            <!--rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException" />-->
-                <!--<tx:method name="insert*" propagation="REQUIRED" read-only="false"-->
+                <!--<tx:method name="add*" propagation="REQUIRED" read-only="false"-->
                            <!--rollback-for="java.lang.RuntimeException" />-->
                 <!--<tx:method name="update*" propagation="REQUIRED" read-only="false"-->
                            <!--rollback-for="java.lang.Exception" />-->
                 <!--<tx:method name="find*" propagation="SUPPORTS" />-->
+                <!--<tx:method name="list*" propagation="SUPPORTS" />-->
                 <!--<tx:method name="get*" propagation="SUPPORTS" />-->
                 <!--<tx:method name="select*" propagation="SUPPORTS" />-->
             <!--</tx:attributes>-->

@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias alias="User" type="com.mjl.model.PO.User"/>
         <typeAlias alias="Board" type="com.mjl.model.PO.Board"/>
+        <typeAlias alias="UserLoginLog" type="com.mjl.model.PO.UserLoginLog"/>
     </typeAliases>
 
 

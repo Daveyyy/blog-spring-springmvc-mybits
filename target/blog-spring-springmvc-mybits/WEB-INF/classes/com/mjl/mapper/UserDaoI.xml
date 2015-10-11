@@ -10,6 +10,7 @@
       <id property="userId" column="user_id"/>
         <result property="userName" column="user_name"/>
         <result property="passWord" column="password"/>
+        <result property="userPhone" column="user_phone"/>
         <result property="userEmail" column="user_email"/>
         <result property="userSex" column="user_sex"/>
         <result property="createTime" column="create_time"/>
@@ -20,17 +21,10 @@
         <result property="lastIp" column="last_ip"/>
     </resultMap>
 
-    <!--<resultMap id="userBoardMap" type="User" extends="userMap">-->
-        <!--<collection property="board" ofType="Board">-->
-            <!--<id property="boardId" column="board_id"/>-->
-            <!--<result property="boardName" column="board_name"/>-->
-            <!--<result property="boardDesc" column="board_desc"/>-->
-            <!--<result property="topicNum" column="board_num"/>-->
-        <!--</collection>-->
-    <!--</resultMap>-->
+
 
     <sql id="user_columns">
-        user_id,user_name,password,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
+        user_id,user_name,password,user_phone,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
     </sql>
 
 
@@ -64,6 +58,9 @@
             <if test="passWord!=null">
                 password,
             </if>
+            <if test="userPhone != null">
+                user_phone,
+            </if>
             <if test="userEmail!=null">
                 user_email,
             </if>
@@ -71,7 +68,13 @@
                 user_sex,
             </if>
             <if test="createTime!=null">
-                create_time
+                create_time,
+            </if>
+            <if test="lastLoginTime != null and lastLoginTime != '' ">
+                last_logintime,
+            </if>
+            <if test="lastIp != null and lastIp != '' ">
+                last_ip
             </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
@@ -81,15 +84,24 @@
          <if test="passWord!=null">
              #{passWord,jdbcType=VARCHAR},
          </if>
+            <if test="userPhone != null">
+                #{user_phone,jdbcType=VARCHAR}},
+            </if>
           <if test="userEmail!=null">
-             #{userEmail,                                                                                                                     jdbcType=VARCHAR},
+             #{userEmail,jdbcType=VARCHAR},
           </if>
-           <if test="userSex!=null">
-             #{userSex,jdbcType=VARCHAR},
+          <if test="userSex != null">
+              #{userSex,jdbcType=VARCHAR},
           </if>
          <if test="createTime!=null">
-            #{createTime,jdbcType=TIMESTAMP}
+            #{createTime,jdbcType=TIMESTAMP},
           </if>
+            <if test="lastLoginTime != null and lastLoginTime != '' ">
+              #{lastLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastIp != null and lastIp != '' ">
+                #{lastIp,jdbcType=VARCHAR}
+            </if>
     </trim>
     </insert>
 
@@ -106,6 +118,9 @@
         SET
         <if test="passWord != null and passWord != '' ">
             password= #{passWord,jdbcType=VARCHAR},
+        </if>
+        <if test="userPhone != null and userPhone != ''">
+            user_phone= #{userPhone,jdbcType=VARCHAR},
         </if>
         <if test="userEmail != null and userEmail != '' ">
             user_email=#{userEmail},
