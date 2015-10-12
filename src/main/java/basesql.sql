@@ -22,14 +22,14 @@ CREATE TABLE IF NOT EXISTS t_board(
 board_id int(10) NOT NULL AUTO_INCREMENT COMMENT '论坛板块id',
 board_name VARCHAR(150) NOT NULL DEFAULT '' COMMENT '论坛板块名称',
 board_desc VARCHAR(300) NOT NULL DEFAULT '' COMMENT '论坛板块描述',
-board_num INT(10) NOT NULL DEFAULT '0' COMMENT '帖子数目',
+board_postnum INT(10) NOT NULL DEFAULT '0' COMMENT '帖子数目',
 PRIMARY KEY  (`board_id`)
 )ENGINE=InnoDB  DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 #登录日志表
 CREATE TABLE IF NOT EXISTS t_login_log(
 login_log_id INT(10) NOT NULL AUTO_INCREMENT COMMENT '日志ID',
-user_name VARCHAR(30) NOT NULL UNIQUE COMMENT '用户名',
+user_name VARCHAR(30) NOT NULL  COMMENT '用户名',
 login_ip VARCHAR(30) NOT NULL DEFAULT '' COMMENT '登录IP',
 login_datetime DATETIME NOT NULL COMMENT '登录时间',
 PRIMARY KEY (`login_log_id`)
@@ -51,29 +51,31 @@ PRIMARY KEY (`login_log_id`)
 #帖子表
 CREATE TABLE IF NOT EXISTS t_post(
 post_id INT(10) NOT NULL AUTO_INCREMENT COMMENT '帖子ID',
-board_id INT(10) NOT NULL default '0' COMMENT '论坛板块ID',
-topic_id INT(10) NOT NULL default '0' COMMENT '话题ID',
-user_id INT(10) NOT NULL default '0' COMMENT '发表者ID',
-post_type INT(2) NOT NULL default '2' COMMENT '帖子类型:1.主帖子 2:回复帖子',
+post_boardid INT(10) NOT NULL default '0' COMMENT '论坛板块ID',
+post_username INT(10) NOT NULL default '0' COMMENT '发表者名称',
 post_title VARCHAR(50) NOT NULL COMMENT '帖子名称',
 post_text  TEXT NOT NULL COMMENT '帖子内容',
-create_time DATETIME NOT NULL COMMENT '创建时间',
-PRIMARY KEY  (`post_id`),
+post_goodcount INT(10) NOT NULL DEFAULT '0' COMMENT '点赞',
+post_badcount INT(10) NOT NULL DEFAULT  '0' COMMENT '踩数',
+post_viewcount INT(10) NOT NULL DEFAULT '0' COMMENT '游览次数',
+post_replycount INT(10) NOT NULL DEFAULT '0' COMMENT '回帖数目',
+post_status INT(2) NOT NULL default '0' COMMENT '帖子状态:0:正常 1:锁定',
+post_createtime DATETIME NOT NULL COMMENT '创建时间',
+post_updatetime DATETIME  COMMENT '更新时间',
+PRIMARY KEY  (`post_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
-#话题表
-CREATE TABLE IF NOT EXISTS t_topic(
-topic_id INT(10) NOT NULL AUTO_INCREMENT COMMENT '话题ID',
-board_id INT(10) NOT NULL COMMENT '板块ID',
-topic_title VARCHAR(100) NOT NULL DEFAULT '' COMMENT '话题名称',
-user_id INT(10) NOT NULL DEFAULT '0' COMMENT '发表用户ID',
-create_time DATETIME NOT NULL COMMENT '话题创建时间',
-last_post DATETIME NOT NULL COMMENT '最后回复时间',
-topic_views INT(10) NOT NULL DEFAULT '1' COMMENT '帖子查看次数',
-topic_replies INT(10) NOT NULL DEFAULT '0' COMMENT '帖子回复数',
-digest INT(10) NOT NULL DEFAULT '0' COMMENT '是否是精华帖子',
-PRIMARY KEY  (`topic_id`)
-)ENGINE=InnoDB  DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
+#回复表
+CREATE TABLE IF NOT EXISTS t_reply(
+reply_id INT(10) NOT NULL AUTO_INCREMENT COMMENT '回复ID',
+reply_postid INT(10) NOT NULL COMMENT '所回复帖子的ID',
+reply_username VARCHAR(30) NOT NULL COMMENT '回帖者姓名',
+reply_content TEXT NOT NULL DEFAULT '' COMMENT '回复内容',
+reply_goodcount INT(10) NOT NULL DEFAULT '0' COMMENT '点赞',
+reply_badcount INT(10) NOT NULL DEFAULT  '0' COMMENT '踩数',
+reply_createtime DATETIME NOT NULL COMMENT '回复时间',
+PRIMARY KEY  (`reply_id`)
+)ENGINE=InnoDB  DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 

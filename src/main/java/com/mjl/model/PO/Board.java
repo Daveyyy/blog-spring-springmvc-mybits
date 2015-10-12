@@ -10,20 +10,9 @@ public class Board implements Serializable {
     private int boardId;
     private String boardName;
     private String boadrDesc;
-    private int topicNum;
+    private int boardPostNum;
 
-    /*
-    由于board与user是多对多对应关系
-     */
-    private List<User> users;
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 
     public String getBoardName() {
         return boardName;
@@ -49,11 +38,21 @@ public class Board implements Serializable {
         this.boadrDesc = boadrDesc;
     }
 
-    public int getTopicNum() {
-        return topicNum;
+    public int getBoardPostNum() {
+        return boardPostNum;
     }
 
-    public void setTopicNum(int topicNum) {
-        this.topicNum = topicNum;
+    public void setBoardPostNum(int boardPostNum) {
+        this.boardPostNum = boardPostNum;
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "boardId=" + boardId +
+                ", boardName='" + boardName + '\'' +
+                ", boadrDesc='" + boadrDesc + '\'' +
+                ", boardPostNum=" + boardPostNum +
+                '}';
     }
 }

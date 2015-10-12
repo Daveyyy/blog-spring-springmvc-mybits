@@ -49,7 +49,6 @@
 
     <!--插入用户信息-->
     <insert id="addUser" parameterType="User" keyProperty="userId" useGeneratedKeys="true">
-
         INSERT  INTO t_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userName!=null">
@@ -85,7 +84,7 @@
              #{passWord,jdbcType=VARCHAR},
          </if>
             <if test="userPhone != null">
-                #{user_phone,jdbcType=VARCHAR}},
+                #{userPhone,jdbcType=VARCHAR},
             </if>
           <if test="userEmail!=null">
              #{userEmail,jdbcType=VARCHAR},

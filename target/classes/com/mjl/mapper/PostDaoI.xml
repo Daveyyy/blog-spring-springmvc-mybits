@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.mjl.dao.PostDaoI">
+    <!--User结果集-->
+    <resultMap id="PostMap" type="Post">
+        <id property="postId" column="post_id"/>
+        <result property="postBoardId" column="post_boardid"/>
+        <result property="postUserName" column="post_username"/>
+        <result property="postTitle" column="post_title"/>
+        <result property="postText" column="post_text"/>
+        <result property="postGoodCount" column="post_goodcount"/>
+        <result property="postBadCount" column="post_badcount"/>
+        <result property="postViewCount" column="post_viewcount"/>
+        <result property="postReplyCount" column="post_replycount"/>
+        <result property="postStatus" column="post_status"/>
+        <result property="postCreatetime" column="post_createtime"/>
+        <result property="postUpdatetime" column="post_uptatetime"/>
+    </resultMap>
+
+    <resultMap id="PostAndUserMap" type="Post">
+        <id property="postId" column="post_id"/>
+        <result property="postBoardId" column="post_boardid"/>
+        <result property="postUserName" column="post_username"/>
+        <result property="postTitle" column="post_title"/>
+        <result property="postText" column="post_text"/>
+        <result property="postGoodCount" column="post_goodcount"/>
+        <result property="postBadCount" column="post_badcount"/>
+        <result property="postViewCount" column="post_viewcount"/>
+        <result property="postReplyCount" column="post_replycount"/>
+        <result property="postStatus" column="post_status"/>
+        <result property="postCreatetime" column="post_createtime"/>
+        <result property="postUpdatetime" column="post_uptatetime"/>
+        <association property="user" javaType="User">
+            <id property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="userSex" column="user_sex"/>
+            <result property="userType" column="user_type"/>
+            <result property="userState" column="user_state"/>
+            <result property="credit" column="credit"/>
+            <result property="lastLoginTime" column="last_logintime"/>
+        </association>
+    </resultMap>
+
+
+
+    <sql id="post_columns">
+        post_id,post_boardid,post_username,post_title,post_text,post_goodcount,post_badcount,post_viewcount,
+        post_replycount,post_status,post_createtime,post_uptatetime
+    </sql>
+
+
+    <!--添加新帖子-->
+    <insert id="addPost" parameterType="Post" keyProperty="postId" useGeneratedKeys="true">
+
+        INSERT  INTO t_post
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="postBoardId!=null">
+                post_boardid,
+            </if>
+            <if test="postUserName!=null">
+                post_username,
+            </if>
+            <if test="postTitle != null">
+                post_title,
+            </if>
+            <if test="postText!=null">
+                post_text,
+            </if>
+            <if test="potsCreateTime!=null">
+                post_createtime,
+            </if>
+            <if test="postUpdateTime != null ">
+                post_uptatetime
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="postBoardId!=null">
+                #{postBoardId},
+            </if>
+            <if test="postUserName!=null">
+                #{postUserName},
+            </if>
+            <if test="postTitle != null">
+                #{postTitle},
+            </if>
+            <if test="postText!=null">
+                #{postText},
+            </if>
+            <if test="potsCreateTime!=null">
+                #{potsCreateTime},
+            </if>
+            <if test="postUpdateTime != null ">
+                #{postUpdateTime}
+            </if>
+        </trim>
+    </insert>
+
+
+</mapper>

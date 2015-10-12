@@ -3,6 +3,7 @@ package com.mjl.controller;
 import com.mjl.dao.UserLoginLogDaoI;
 import com.mjl.model.PO.User;
 import com.mjl.model.PO.UserLoginLog;
+import com.mjl.service.Impl.UserServiceImpl;
 import com.mjl.service.LoginLogServiceI;
 import com.mjl.service.UserSerivceI;
 import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
@@ -79,6 +80,9 @@ public class UserController {
             tempuser.setCreateTime(createloginTime);
             tempuser.setLastLoginTime(createloginTime);
 
+            System.out.println("!!!"+tempuser.toString());
+            userSerivce.addUser(tempuser);
+
             //保存入用户登录表的信息
             UserLoginLog userLoginLog = new UserLoginLog();
             userLoginLog.setUserName(tempuser.getUserName());
@@ -87,6 +91,7 @@ public class UserController {
             loginLogServiceI.AddUserLoginLog(userLoginLog);
 
         }catch (Exception e){
+            e.printStackTrace();
             request.getSession().setAttribute("Msg", "注册失败,用户名或密码错误!");
             return "user/loginStatus";
         }
@@ -127,3 +132,4 @@ public class UserController {
         return "main";
     }
 }
+

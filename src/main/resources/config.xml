@@ -7,6 +7,8 @@
         <typeAlias alias="User" type="com.mjl.model.PO.User"/>
         <typeAlias alias="Board" type="com.mjl.model.PO.Board"/>
         <typeAlias alias="UserLoginLog" type="com.mjl.model.PO.UserLoginLog"/>
+        <typeAlias alias="Post" type="com.mjl.model.PO.Post"/>
+        <typeAlias alias="Reply" type="com.mjl.model.PO.Reply"/>
     </typeAliases>
 
 

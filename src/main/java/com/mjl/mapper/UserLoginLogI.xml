@@ -13,7 +13,7 @@
         <result property="loginDateTime" column="login_datetime"/>
     </resultMap>
 
-    <sql id="user_columns">
+    <sql id="userLoginLog_columns">
         login_log_id,user_name,login_ip,login_datetime
     </sql>
 
@@ -21,7 +21,7 @@
     <!--列出所有用户登录信息-->
     <select id="listAllUserLoginLog"  resultMap="userLoginLogMap">
         SELECT
-         <include refid="user_columns"/>
+         <include refid="userLoginLog_columns"/>
          FROM
         t_login_log
     </select>

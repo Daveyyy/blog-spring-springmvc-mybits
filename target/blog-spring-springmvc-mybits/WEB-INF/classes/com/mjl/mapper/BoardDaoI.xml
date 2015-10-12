@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.mjl.dao.BoardDaoI">
+    <!--User结果集-->
+    <resultMap id="BoardMap" type="Board">
+        <id property="boardId" column="board_id"/>
+        <result property="boardName" column="board_name"/>
+        <result property="boadrDesc" column="board_desc"/>
+        <result property="boardPostNum" column="board_postnum"/>
+    </resultMap>
+
+
+
+
+    <sql id="user_columns">
+        board_id,board_name,board_desc,boardPostNum
+    </sql>
+
+    <!--添加新帖子-->
+    <insert id="addBoard" parameterType="Board" keyProperty="boardId" useGeneratedKeys="true">
+
+        INSERT  INTO t_post
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="boardName!=null">
+                board_name,
+            </if>
+            <if test="boadrDesc!=null">
+                board_desc,
+            </if>
+            <if test="boardPostNum != null">
+                board_postnum
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="boardName!=null">
+                boardName,
+            </if>
+            <if test="boadrDesc!=null">
+                boadrDesc,
+            </if>
+            <if test="boardPostNum != null">
+                boardPostNum
+            </if>
+        </trim>
+    </insert>
+
+
+
+</mapper>

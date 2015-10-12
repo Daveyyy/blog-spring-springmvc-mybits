@@ -100,7 +100,7 @@
         <td><input type="text" name="lastIp" value="${user.lastIp}" readonly></td>
       </tr>
       <tr>
-        <td><input type="submit" value="保存修改" name="submit" align="center"/></td>
+        <td align="center"><input type="submit" value="保存修改" name="submit" /></td>
         <td align="center"><a href="http://localhost:8080"><input type="button" name="comeback" value="返回首页"/></a></td>
       </tr>
     </table>

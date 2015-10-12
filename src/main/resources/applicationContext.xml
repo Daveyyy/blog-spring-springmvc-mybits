@@ -73,9 +73,9 @@
 
 
     <!-- 对数据源进行事务管理 -->
-    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+    <!--<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
     <!--配置事务打传播特性 该事务打管理者为txManager 事务的隔离级别设置为REQUIRED则表示当前有事务就加入,没有则创建一个
     新的,SUPPORTS有则加入,无则没有事务隔离执行-->
         <!--<tx:advice id="userTxAdvice" transaction-manager="txManager">-->

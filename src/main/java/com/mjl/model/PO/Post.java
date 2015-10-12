@@ -1,32 +1,23 @@
 package com.mjl.model.PO;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * Created by Alvin on 15/10/4.
- * 帖子类
+ * Created by Alvin on 15/10/12.
  */
-public class Post implements Serializable{
-
-
+public class Post {
     private int postId;
-    private int boardId;
-    private int topicId;
-    private int userId;
-    private int postType;
+    private int postBoardID;
+    private String postUsername;
     private String postTitle;
-    private String postText;
-    private Timestamp dateTime;
-
-    /*
-    帖子类与用户类形成多对一关系,一个用户可以发多个帖子
-     */
-
-    /*
-    帖子类与话题类形成多对一的关系,多个帖子可以属于同一个话题
-     */
-
+    private String postContent;
+    private int postGoodCount;
+    private int postBadCount;
+    private int postViewCount;
+    private int postReplyCount;
+    private int postStatus;
+    private Timestamp postCreateTime;
+    private Timestamp postUpdateTime;
 
     public int getPostId() {
         return postId;
@@ -36,36 +27,20 @@ public class Post implements Serializable{
         this.postId = postId;
     }
 
-    public int getBoardId() {
-        return boardId;
+    public int getPostBoardID() {
+        return postBoardID;
     }
 
-    public void setBoardId(int boardId) {
-        this.boardId = boardId;
+    public void setPostBoardID(int postBoardID) {
+        this.postBoardID = postBoardID;
     }
 
-    public int getTopicId() {
-        return topicId;
+    public String getPostUsername() {
+        return postUsername;
     }
 
-    public void setTopicId(int topicId) {
-        this.topicId = topicId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getPostType() {
-        return postType;
-    }
-
-    public void setPostType(int postType) {
-        this.postType = postType;
+    public void setPostUsername(String postUsername) {
+        this.postUsername = postUsername;
     }
 
     public String getPostTitle() {
@@ -76,19 +51,85 @@ public class Post implements Serializable{
         this.postTitle = postTitle;
     }
 
-    public String getPostText() {
-        return postText;
+    public String getPostContent() {
+        return postContent;
     }
 
-    public void setPostText(String postText) {
-        this.postText = postText;
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
     }
 
-    public Timestamp getDateTime() {
-        return dateTime;
+    public int getPostGoodCount() {
+        return postGoodCount;
     }
 
-    public void setDateTime(Timestamp dateTime) {
-        this.dateTime = dateTime;
+    public void setPostGoodCount(int postGoodCount) {
+        this.postGoodCount = postGoodCount;
+    }
+
+    public int getPostBadCount() {
+        return postBadCount;
+    }
+
+    public void setPostBadCount(int postBadCount) {
+        this.postBadCount = postBadCount;
+    }
+
+    public int getPostViewCount() {
+        return postViewCount;
+    }
+
+    public void setPostViewCount(int postViewCount) {
+        this.postViewCount = postViewCount;
+    }
+
+    public int getPostReplyCount() {
+        return postReplyCount;
+    }
+
+    public void setPostReplyCount(int postReplyCount) {
+        this.postReplyCount = postReplyCount;
+    }
+
+    public int getPostStatus() {
+        return postStatus;
+    }
+
+    public void setPostStatus(int postStatus) {
+        this.postStatus = postStatus;
+    }
+
+    public Timestamp getPostCreateTime() {
+        return postCreateTime;
+    }
+
+    public void setPostCreateTime(Timestamp postCreateTime) {
+        this.postCreateTime = postCreateTime;
+    }
+
+    public Timestamp getPostUpdateTime() {
+        return postUpdateTime;
+    }
+
+    public void setPostUpdateTime(Timestamp postUpdateTime) {
+        this.postUpdateTime = postUpdateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", postBoardID=" + postBoardID +
+                ", postUsername='" + postUsername + '\'' +
+                ", postTitle='" + postTitle + '\'' +
+                ", postContent='" + postContent + '\'' +
+                ", postGoodCount=" + postGoodCount +
+                ", postBadCount=" + postBadCount +
+                ", postViewCount=" + postViewCount +
+                ", postReplyCount=" + postReplyCount +
+                ", postStatus=" + postStatus +
+                ", postCreateTime=" + postCreateTime +
+                ", postUpdateTime=" + postUpdateTime +
+                '}';
     }
 }
