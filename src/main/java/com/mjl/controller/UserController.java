@@ -71,8 +71,7 @@ public class UserController {
      */
     @RequestMapping(value = "/register" ,method = RequestMethod.POST)
     public String UserRegister(User user ,HttpServletRequest request){
-        User tempuser = new User();
-        tempuser = user;
+        User tempuser =user;
         if(tempuser != null){
         try {
             tempuser.setLastIp(request.getRemoteAddr());

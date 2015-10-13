@@ -9,26 +9,36 @@
     <resultMap id="BoardMap" type="Board">
         <id property="boardId" column="board_id"/>
         <result property="boardName" column="board_name"/>
-        <result property="boadrDesc" column="board_desc"/>
+        <result property="boardDesc" column="board_desc"/>
         <result property="boardPostNum" column="board_postnum"/>
     </resultMap>
 
 
 
 
-    <sql id="user_columns">
-        board_id,board_name,board_desc,boardPostNum
+    <sql id="Board_columns">
+        board_id,board_name,board_desc,board_postnum
     </sql>
+
+    <select id="listAllBoard" resultMap="BoardMap">
+        SELECT
+        <include refid="Board_columns"/>
+        FROM
+        t_board
+    </select>
+
+
+
 
     <!--添加新帖子-->
     <insert id="addBoard" parameterType="Board" keyProperty="boardId" useGeneratedKeys="true">
 
-        INSERT  INTO t_post
+        INSERT  INTO t_board
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="boardName!=null">
                 board_name,
             </if>
-            <if test="boadrDesc!=null">
+            <if test="boardDesc!=null">
                 board_desc,
             </if>
             <if test="boardPostNum != null">
@@ -37,13 +47,13 @@
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="boardName!=null">
-                boardName,
+                #{boardName,},
             </if>
-            <if test="boadrDesc!=null">
-                boadrDesc,
+            <if test="boardDesc!=null">
+                #{boardDesc},
             </if>
             <if test="boardPostNum != null">
-                boardPostNum
+                #{boardPostNum}
             </if>
         </trim>
     </insert>

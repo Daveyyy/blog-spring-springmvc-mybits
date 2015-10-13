@@ -36,13 +36,42 @@
            <c:when test="${username !=null}">
              欢迎回来:
                <a href="<%=basePath%>user/listUserInfo.do?username=${username}"> <font color="red">${username}</font></a>
+               <c:if test="${username == 'admin'}">
+               <a href="<%=basePath%>admin/ManageCenter.do"><button>登入管理后台</button></a>
+               </c:if>
               <a href="<%=basePath%>user/loginout.do"><button name="logout" >注销</button></a>
              </c:when>
              <c:when test="${username ==null}">
                <font color="red">您还未登录!  </font>
-             <span><a href="<%=basePath%>view/user/userlogin.jsp">登录</a></span><span><a href="<%=basePath%>view/user/user_register.jsp">注册</a></span>
+             <span><a href="<%=basePath%>view/user/userlogin.jsp">登录 </a></span>
+                 <span><a href="<%=basePath%>view/user/user_register.jsp">注册</a></span>
              </c:when>
     </c:choose>
+    </div>
+
+    <div class="listBoard-content">
+
+
+            <c:forEach items="${boards}" var="boards" varStatus="status">
+                <table border="2" align="center">
+                <tr>
+                    <td >版块名称:</td>
+                    <td><a href="<%=basePath%>board/${boards.boardId}.do">${boards.boardName}</a> </td>
+                </tr>
+
+                <tr>
+                    <td >版块描述:</td>
+                    <td style="height:70px;width:800px">${boards.boardDesc}</td>
+                </tr>
+                <tr>
+                    <td>版块总帖数:</td>
+                    <td>${boards.boardPostNum}</td>
+                </tr>
+              <br><br>
+                </table>
+            </c:forEach>
+
+
     </div>
 </div>
 </body>

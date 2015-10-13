@@ -9,7 +9,7 @@ import java.util.List;
 public class Board implements Serializable {
     private int boardId;
     private String boardName;
-    private String boadrDesc;
+    private String boardDesc;
     private int boardPostNum;
 
 
@@ -30,12 +30,12 @@ public class Board implements Serializable {
         this.boardId = boardId;
     }
 
-    public String getBoadrDesc() {
-        return boadrDesc;
+    public String getBoardDesc() {
+        return boardDesc;
     }
 
-    public void setBoadrDesc(String boadrDesc) {
-        this.boadrDesc = boadrDesc;
+    public void setBoardDesc(String boardDesc) {
+        this.boardDesc = boardDesc;
     }
 
     public int getBoardPostNum() {
@@ -51,7 +51,7 @@ public class Board implements Serializable {
         return "Board{" +
                 "boardId=" + boardId +
                 ", boardName='" + boardName + '\'' +
-                ", boadrDesc='" + boadrDesc + '\'' +
+                ", boardDesc='" + boardDesc + '\'' +
                 ", boardPostNum=" + boardPostNum +
                 '}';
     }
