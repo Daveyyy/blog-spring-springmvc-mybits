@@ -11,4 +11,6 @@ public interface BoardServiceI {
     public void addBoardByBoard(Board board);
     public void deleteBoadrByBoardName(String BoardName);
     public List<Board> listAllBoard();
+    public Board IntoBoardByBoardId(int boardId);
+    public Board IntoBoardByBoardName(String boardName);
 }

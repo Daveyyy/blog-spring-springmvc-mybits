@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Avlin
@@ -7,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -56,7 +56,7 @@
                 <table border="2" align="center">
                 <tr>
                     <td >版块名称:</td>
-                    <td><a href="<%=basePath%>board/${boards.boardId}.do">${boards.boardName}</a> </td>
+                    <td><a href="<%=basePath%>board/listPosts-${boards.boardId}.do">${boards.boardName}</a> </td>
                 </tr>
 
                 <tr>

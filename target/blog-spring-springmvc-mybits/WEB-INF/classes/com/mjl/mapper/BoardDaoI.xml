@@ -20,6 +20,7 @@
         board_id,board_name,board_desc,board_postnum
     </sql>
 
+    <!--显示所有版块-->
     <select id="listAllBoard" resultMap="BoardMap">
         SELECT
         <include refid="Board_columns"/>
@@ -28,7 +29,25 @@
     </select>
 
 
+    <!--通过版块Id查找版块-->
+    <select id="findBoardByBoardId" resultMap="BoardMap">
+        SELECT
+        <include refid="Board_columns"/>
+        FROM
+        t_board
+        WHERE
+        board_id = #{boardId}
+    </select>
 
+    <!--通过版块名称查找版块-->
+    <select id="findBoardByBoardName" resultMap="BoardMap">
+        SELECT
+        <include refid="Board_columns"/>
+        FROM
+        t_board
+        WHERE
+        board_id = #{boardName}
+    </select>
 
     <!--添加新帖子-->
     <insert id="addBoard" parameterType="Board" keyProperty="boardId" useGeneratedKeys="true">

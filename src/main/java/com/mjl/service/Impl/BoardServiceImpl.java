@@ -30,4 +30,14 @@ public class BoardServiceImpl implements BoardServiceI{
     public List<Board> listAllBoard() {
         return boardDaoI.listAllBoard();
     }
+
+    public Board IntoBoardByBoardId(int boardId) {
+
+            return boardDaoI.findBoardByBoardId(boardId);
+
+    }
+
+    public Board IntoBoardByBoardName(String boardName) {
+        return boardDaoI.findBoardByBoardName(boardName);
+    }
 }
