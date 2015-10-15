@@ -42,7 +42,7 @@
     <div class="content">
       <div class="content-top" >
         <div style='flaot:left;'><font color="red">&nbsp&nbsp${board.boardName}</font></div>
-        <div style='flaot:right;'><a href="<%=basePath%>view/post/addPost.jsp"><button>发表文章</button></a></div>
+        <div style='flaot:right;'><a href="<%=basePath%>post/editorPost.do?boardId=${board.boardId}"><button>发表文章</button></a></div>
         <div style="clear:both"></div>
         </div>
       <div class="content-main">

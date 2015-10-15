@@ -26,10 +26,10 @@
         </tr>
         <tr>
           ${boardId}
-          <td><input type="hidden" name="postBoardID" value="${boardId}"></td>
+          <td><input  name="postBoardID" value="${boardId}"></td>
         </tr>
         <tr>
-          <td><input type="hidden" name="postUserName" value="${userName}"></td>
+          <td><input  name="postUserName" value="${userName}"></td>
         </tr>
         <tr>
           <td>文章名称:</td>
