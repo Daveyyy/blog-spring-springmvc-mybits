@@ -1,6 +1,8 @@
 package com.mjl.controller;
 
+import com.mjl.model.PO.Board;
 import com.mjl.model.PO.Post;
+import com.mjl.service.BoardServiceI;
 import com.mjl.service.PostServiceI;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,25 +24,24 @@ public class postController {
     @Resource
     PostServiceI postServiceI;
 
+    @Resource
+    BoardServiceI boardServiceI;
+
     @RequestMapping(value ="/addPost")
-    public String addPost(Post post,HttpServletRequest request){
-        Object board = request.getSession().getAttribute("boardId");
+    public String addPost(Post post){
         Post dbpost = post;
-        dbpost.setPostBoardID((Integer) board);
-        System.out.println("boardid_---->" +board);
         Timestamp createloginTime = new Timestamp(new Date().getTime());
         dbpost.setPostCreateTime(createloginTime);
         dbpost.setPostUpdateTime(createloginTime);
+
         postServiceI.addPostByPost(post);
-        return "postMain";
+        boardServiceI.UpdatePostNum(post.getPostBoardId());
+        return "post/postMain";
     }
 
-    @RequestMapping(value = "/editorPost")
-    public String editorPost(HttpServletRequest request,RedirectAttributes redirectAttributes){
-        Object boardIdTemp = request.getAttribute("boardId");
-        System.out.println("!!!!"+boardIdTemp);
-        redirectAttributes.addFlashAttribute("boardId",boardIdTemp);
-        return "forward:/view/post/addPost.jsp";
+    public String listAllPost(HttpServletRequest request){
+
     }
+
 
 }

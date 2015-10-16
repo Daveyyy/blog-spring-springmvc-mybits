@@ -25,11 +25,10 @@
           <td colspan="2">编辑新帖子</td>
         </tr>
         <tr>
-          ${boardId}
-          <td><input  name="postBoardID" value="${boardId}"></td>
+          <td><input type="hidden" name="postBoardId" value="<%=request.getParameter("boardId")%>"></td>
         </tr>
         <tr>
-          <td><input  name="postUserName" value="${userName}"></td>
+          <td><input  type="hidden" name="postUserName" value="<%=request.getParameter("userName")%>"></td>
         </tr>
         <tr>
           <td>文章名称:</td>

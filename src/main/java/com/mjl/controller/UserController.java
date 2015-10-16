@@ -57,7 +57,7 @@ public class UserController {
                 loginLogServiceI.AddUserLoginLog(userLoginLog);
 
                 request.getSession().setAttribute("username",dbuser.getUserName());
-                return "main";
+                return "redirect:/mainPage.do";
             }
 
         request.getSession().setAttribute("Msg", "登录失败,用户名或密码错误!");

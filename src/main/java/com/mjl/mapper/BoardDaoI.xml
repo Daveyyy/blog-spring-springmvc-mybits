@@ -14,6 +14,26 @@
     </resultMap>
 
 
+    <resultMap id="BoardAndPostMap" type="Board">
+        <id property="boardId" column="board_id"/>
+        <result property="boardName" column="board_name"/>
+        <result property="boardDesc" column="board_desc"/>
+        <result property="boardPostNum" column="board_postnum"/>
+        <collection property="posts" ofType="Post">
+            <id property="postId" column="post_id"/>
+            <result property="postBoardId" column="post_boardid"/>
+            <result property="postUserName" column="post_username"/>
+            <result property="postTitle" column="post_title"/>
+            <result property="postContent" column="post_content"/>
+            <result property="postGoodCount" column="post_goodcount"/>
+            <result property="postBadCount" column="post_badcount"/>
+            <result property="postViewCount" column="post_viewcount"/>
+            <result property="postReplyCount" column="post_replycount"/>
+            <result property="postStatus" column="post_status"/>
+            <result property="postCreatetime" column="post_createtime"/>
+            <result property="postUpdatetime" column="post_uptatetime"/>
+        </collection>
+    </resultMap>
 
 
     <sql id="Board_columns">
@@ -49,6 +69,30 @@
         board_id = #{boardName}
     </select>
 
+    <select id="listAllPostsOfBoard" resultMap="BoardAndPostMap">
+        SELECT
+        B.id AS board_id,
+        B.name AS board_name,
+        B.desc AS board_desc,
+        B.postnum AS board_postnum,
+        P.id AS post_id,
+        P.boardid AS post_boardid,
+        P.username AS post_username,
+        P.title AS post_title,
+        P.content AS post_content,
+        P.goodcount AS post_goodcount,
+        P.badcount AS post_badcount,
+        P.viewcount AS  post_viewcount,
+        P.replycount AS post_replycount,
+        P.status AS post_status,
+        P.createtime AS post_createtime,
+        P.updatetime AS post_uptatetime
+        FROM t_board B,t_post P
+        WHERE B.id = P.boardid AND B.id = #{boardId}
+    </select>
+    
+    
+    
     <!--添加新帖子-->
     <insert id="addBoard" parameterType="Board" keyProperty="boardId" useGeneratedKeys="true">
 
@@ -66,7 +110,7 @@
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="boardName!=null">
-                #{boardName,},
+                #{boardName},
             </if>
             <if test="boardDesc!=null">
                 #{boardDesc},
@@ -77,6 +121,22 @@
         </trim>
     </insert>
 
+    <update id="updateBoardByBoard" parameterType="Board">
+        UPDATE
+        t_board
+        SET
+            <if test="boardName!=null">
+            board_name = #{boardName},
+            </if>
+            <if test="boardDesc!=null">
+            board_desc =  #{boardDesc},
+            </if>
+            <if test="boardPostNum != null">
+            board_postnum = #{boardPostNum,jdbcType=VARCHAR}
+            </if>
+        WHERE
+        board_id = #{boardId}
+    </update>
 
 
 </mapper>

@@ -11,7 +11,7 @@
         <result property="postBoardId" column="post_boardid"/>
         <result property="postUserName" column="post_username"/>
         <result property="postTitle" column="post_title"/>
-        <result property="postText" column="post_text"/>
+        <result property="postContent" column="post_content"/>
         <result property="postGoodCount" column="post_goodcount"/>
         <result property="postBadCount" column="post_badcount"/>
         <result property="postViewCount" column="post_viewcount"/>
@@ -26,7 +26,7 @@
         <result property="postBoardId" column="post_boardid"/>
         <result property="postUserName" column="post_username"/>
         <result property="postTitle" column="post_title"/>
-        <result property="postText" column="post_text"/>
+        <result property="postContent" column="post_content"/>
         <result property="postGoodCount" column="post_goodcount"/>
         <result property="postBadCount" column="post_badcount"/>
         <result property="postViewCount" column="post_viewcount"/>
@@ -48,7 +48,7 @@
 
 
     <sql id="post_columns">
-        post_id,post_boardid,post_username,post_title,post_text,post_goodcount,post_badcount,post_viewcount,
+        post_id,post_boardid,post_username,post_title,post_content,post_goodcount,post_badcount,post_viewcount,
         post_replycount,post_status,post_createtime,post_uptatetime
     </sql>
 
@@ -67,14 +67,14 @@
             <if test="postTitle != null">
                 post_title,
             </if>
-            <if test="postText!=null">
-                post_text,
+            <if test="postContent!=null">
+                post_content,
             </if>
-            <if test="potsCreateTime!=null">
+            <if test="postCreateTime!=null">
                 post_createtime,
             </if>
             <if test="postUpdateTime != null ">
-                post_uptatetime
+                post_updatetime
             </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
@@ -87,11 +87,11 @@
             <if test="postTitle != null">
                 #{postTitle},
             </if>
-            <if test="postText!=null">
-                #{postText},
+            <if test="postContent!=null">
+                #{postContent},
             </if>
-            <if test="potsCreateTime!=null">
-                #{potsCreateTime},
+            <if test="postCreateTime!=null">
+                #{postCreateTime},
             </if>
             <if test="postUpdateTime != null ">
                 #{postUpdateTime}

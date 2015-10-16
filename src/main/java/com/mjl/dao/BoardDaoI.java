@@ -12,4 +12,6 @@ public interface BoardDaoI {
     public List<Board> listAllBoard();
     public Board findBoardByBoardId(int boardId);
     public Board findBoardByBoardName(String boardName);
+
+    public void updateBoardByBoard(Board board);
 }

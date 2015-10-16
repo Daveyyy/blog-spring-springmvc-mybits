@@ -66,7 +66,7 @@
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="boardName!=null">
-                #{boardName,},
+                #{boardName},
             </if>
             <if test="boardDesc!=null">
                 #{boardDesc},
@@ -77,6 +77,22 @@
         </trim>
     </insert>
 
+    <update id="updateBoardByBoard" parameterType="Board">
+        UPDATE
+        t_board
+        SET
+            <if test="boardName!=null">
+            board_name = #{boardName},
+            </if>
+            <if test="boardDesc!=null">
+            board_desc =  #{boardDesc},
+            </if>
+            <if test="boardPostNum != null">
+            board_postnum = #{boardPostNum,jdbcType=VARCHAR}
+            </if>
+        WHERE
+        board_id = #{boardId}
+    </update>
 
 
 </mapper>

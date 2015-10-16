@@ -7,8 +7,8 @@ import java.sql.Timestamp;
  */
 public class Post {
     private int postId;
-    private int postBoardID;
-    private String postUsername;
+    private int postBoardId;
+    private String postUserName;
     private String postTitle;
     private String postContent;
     private int postGoodCount;
@@ -27,20 +27,20 @@ public class Post {
         this.postId = postId;
     }
 
-    public int getPostBoardID() {
-        return postBoardID;
+    public int getPostBoardId() {
+        return postBoardId;
     }
 
-    public void setPostBoardID(int postBoardID) {
-        this.postBoardID = postBoardID;
+    public void setPostBoardId(int postBoardId) {
+        this.postBoardId = postBoardId;
     }
 
-    public String getPostUsername() {
-        return postUsername;
+    public String getPostUserName() {
+        return postUserName;
     }
 
-    public void setPostUsername(String postUsername) {
-        this.postUsername = postUsername;
+    public void setPostUserName(String postUserName) {
+        this.postUserName = postUserName;
     }
 
     public String getPostTitle() {
@@ -119,8 +119,8 @@ public class Post {
     public String toString() {
         return "Post{" +
                 "postId=" + postId +
-                ", postBoardID=" + postBoardID +
-                ", postUsername='" + postUsername + '\'' +
+                ", postBoardId=" + postBoardId +
+                ", postUserName='" + postUserName + '\'' +
                 ", postTitle='" + postTitle + '\'' +
                 ", postContent='" + postContent + '\'' +
                 ", postGoodCount=" + postGoodCount +

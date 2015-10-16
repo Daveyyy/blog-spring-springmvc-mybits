@@ -13,13 +13,17 @@ public class Board implements Serializable {
     private int boardPostNum;
 
 
+    /*
+    因为Board与Post是一对多的关系.
+     */
+    private List<Post> posts;
 
-    public String getBoardName() {
-        return boardName;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setBoardName(String boardName) {
-        this.boardName = boardName;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     public int getBoardId() {
@@ -28,6 +32,14 @@ public class Board implements Serializable {
 
     public void setBoardId(int boardId) {
         this.boardId = boardId;
+    }
+
+    public String getBoardName() {
+        return boardName;
+    }
+
+    public void setBoardName(String boardName) {
+        this.boardName = boardName;
     }
 
     public String getBoardDesc() {

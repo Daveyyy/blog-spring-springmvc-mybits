@@ -13,4 +13,5 @@ public interface BoardServiceI {
     public List<Board> listAllBoard();
     public Board IntoBoardByBoardId(int boardId);
     public Board IntoBoardByBoardName(String boardName);
+    public void UpdatePostNum(int boardId);
 }

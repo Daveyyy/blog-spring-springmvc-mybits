@@ -38,6 +38,20 @@ public class BoardServiceImpl implements BoardServiceI{
     }
 
     public Board IntoBoardByBoardName(String boardName) {
+
         return boardDaoI.findBoardByBoardName(boardName);
+    }
+
+    public void UpdatePostNum(int boardId) {
+        System.out.println("+++++" + boardId);
+        Board dbBoard = boardDaoI.findBoardByBoardId(boardId);
+
+        System.out.println("!!+++baordid" + dbBoard.getBoardId());
+        System.out.println("!!+++boardName" + dbBoard.getBoardName());
+        System.out.println("!!+++boarddesc" + dbBoard.getBoardDesc());
+        System.out.println("beford!!+++boardnum" + dbBoard.getBoardPostNum());
+        dbBoard.setBoardPostNum(dbBoard.getBoardPostNum() + 1);
+        boardDaoI.updateBoardByBoard(dbBoard);
+
     }
 }
