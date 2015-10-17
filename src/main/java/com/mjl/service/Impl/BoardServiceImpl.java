@@ -31,6 +31,11 @@ public class BoardServiceImpl implements BoardServiceI{
         return boardDaoI.listAllBoard();
     }
 
+    public Board listAllPostsOfBoard(int boardId) {
+
+        return  boardDaoI.listAllPostsOfBoard(boardId);
+    }
+
     public Board IntoBoardByBoardId(int boardId) {
 
             return boardDaoI.findBoardByBoardId(boardId);

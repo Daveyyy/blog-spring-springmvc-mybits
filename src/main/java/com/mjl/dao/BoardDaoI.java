@@ -10,6 +10,7 @@ import java.util.List;
 public interface BoardDaoI {
     public void addBoard(Board board);
     public List<Board> listAllBoard();
+    public Board listAllPostsOfBoard(int boardId);
     public Board findBoardByBoardId(int boardId);
     public Board findBoardByBoardName(String boardName);
 

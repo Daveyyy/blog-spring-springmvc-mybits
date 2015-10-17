@@ -46,6 +46,24 @@
         <div style="clear:both"></div>
         </div>
       <div class="content-main">
+        <table border="2" align="center">
+          <c:forEach items="${board.posts}" var="posts" varStatus="status">
+            <tr >
+              <td><font color="red">帖子名称:</font></td>
+              <td><font color="red">${posts.postTitle}</font></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="">修改</a>
+              </td>
+              <td>
+                <a href="">删除</a>
+              </td>
+            </tr>
+          </c:forEach>
+        </table>
+
+
 
 
       </div>

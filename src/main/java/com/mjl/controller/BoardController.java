@@ -22,9 +22,12 @@ public class BoardController {
 
     @RequestMapping(value = "/listPosts-{boardId}")
     public String IntoBoard(@PathVariable int boardId,HttpServletRequest request){
-        System.out.println("!!!!!"+boardId);
-        Board board = boardServiceI.IntoBoardByBoardId(boardId);
+        Board board = boardServiceI.listAllPostsOfBoard(boardId);
+
         request.setAttribute("board",board);
         return "post/postMain";
     }
+
+
+
 }

@@ -30,8 +30,8 @@
             <result property="postViewCount" column="post_viewcount"/>
             <result property="postReplyCount" column="post_replycount"/>
             <result property="postStatus" column="post_status"/>
-            <result property="postCreatetime" column="post_createtime"/>
-            <result property="postUpdatetime" column="post_uptatetime"/>
+            <result property="postCreateTime" column="post_createtime"/>
+            <result property="postUpdateTime" column="post_uptatetime"/>
         </collection>
     </resultMap>
 
@@ -69,26 +69,12 @@
         board_id = #{boardName}
     </select>
 
+    <!--显示版块和版块中的-->
     <select id="listAllPostsOfBoard" resultMap="BoardAndPostMap">
         SELECT
-        B.id AS board_id,
-        B.name AS board_name,
-        B.desc AS board_desc,
-        B.postnum AS board_postnum,
-        P.id AS post_id,
-        P.boardid AS post_boardid,
-        P.username AS post_username,
-        P.title AS post_title,
-        P.content AS post_content,
-        P.goodcount AS post_goodcount,
-        P.badcount AS post_badcount,
-        P.viewcount AS  post_viewcount,
-        P.replycount AS post_replycount,
-        P.status AS post_status,
-        P.createtime AS post_createtime,
-        P.updatetime AS post_uptatetime
+        *
         FROM t_board B,t_post P
-        WHERE B.id = P.boardid AND B.id = #{boardId}
+        WHERE B.board_id = P.post_boardid AND B.board_id = #{boardId}
     </select>
     
     

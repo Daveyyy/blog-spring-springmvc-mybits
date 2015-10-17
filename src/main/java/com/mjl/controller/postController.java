@@ -39,9 +39,7 @@ public class postController {
         return "post/postMain";
     }
 
-    public String listAllPost(HttpServletRequest request){
 
-    }
 
 
 }
