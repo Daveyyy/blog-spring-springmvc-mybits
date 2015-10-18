@@ -7,4 +7,5 @@ import com.mjl.model.PO.Post;
  */
 public interface PostDaoI {
     public void addPost(Post post);
+    public Post findPostByPostId(int postId);
 }

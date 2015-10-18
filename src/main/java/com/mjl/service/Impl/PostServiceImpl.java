@@ -19,4 +19,8 @@ public class PostServiceImpl  implements PostServiceI{
     public void addPostByPost(Post post) {
         postDaoI.addPost(post);
     }
+
+    public Post ListPostContent(int postId) {
+        return postDaoI.findPostByPostId(postId);
+    }
 }

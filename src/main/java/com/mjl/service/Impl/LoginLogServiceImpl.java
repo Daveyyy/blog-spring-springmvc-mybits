@@ -22,6 +22,7 @@ public class LoginLogServiceImpl implements LoginLogServiceI{
     }
 
     public void AddUserLoginLog(UserLoginLog userLoginLog) {
+
         userLoginLogDaoI.addUserLoginLog(userLoginLog);
     }
 

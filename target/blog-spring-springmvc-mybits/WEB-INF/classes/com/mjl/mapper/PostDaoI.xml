@@ -32,8 +32,8 @@
         <result property="postViewCount" column="post_viewcount"/>
         <result property="postReplyCount" column="post_replycount"/>
         <result property="postStatus" column="post_status"/>
-        <result property="postCreatetime" column="post_createtime"/>
-        <result property="postUpdatetime" column="post_uptatetime"/>
+        <result property="postCreateTime" column="post_createtime"/>
+        <result property="postUpdateTime" column="post_uptatetime"/>
         <association property="user" javaType="User">
             <id property="userId" column="user_id"/>
             <result property="userName" column="user_name"/>
@@ -53,6 +53,20 @@
     </sql>
 
 
+    <select id="findPostByPostId" resultMap="PostAndUserMap">
+        SELECT
+        *
+        FROM
+        t_post P,t_user U
+        WHERE
+        P.post_username = U.user_name
+        AND
+        P.post_id = #{postId}
+
+    </select>
+    
+    
+    
     <!--添加新帖子-->
     <insert id="addPost" parameterType="Post" keyProperty="postId" useGeneratedKeys="true">
 

@@ -53,8 +53,6 @@
         <property name="configLocation" value="classpath:config.xml"/>
         <!--用于配置mapper映射xml-->
         <property name="mapperLocations" value="classpath*:com/mjl/mapper/*.xml"/>
-
-
     </bean>
 
     <!--<bean id="UserDaoI" class="org.mybatis.spring.mapper.MapperFactoryBean">-->

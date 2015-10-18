@@ -48,9 +48,9 @@
       <div class="content-main">
         <table border="2" align="center">
           <c:forEach items="${board.posts}" var="posts" varStatus="status">
-            <tr >
+            <tr >${posts.postId}
               <td><font color="red">帖子名称:</font></td>
-              <td><font color="red">${posts.postTitle}</font></td>
+              <td><a href="<%=basePath%>post/PostContent-${posts.postId}.do"><font color="red">${posts.postTitle}</font></a></td>
             </tr>
             <tr>
               <td>

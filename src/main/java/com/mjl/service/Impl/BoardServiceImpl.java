@@ -28,6 +28,7 @@ public class BoardServiceImpl implements BoardServiceI{
     }
 
     public List<Board> listAllBoard() {
+
         return boardDaoI.listAllBoard();
     }
 
@@ -48,13 +49,8 @@ public class BoardServiceImpl implements BoardServiceI{
     }
 
     public void UpdatePostNum(int boardId) {
-        System.out.println("+++++" + boardId);
-        Board dbBoard = boardDaoI.findBoardByBoardId(boardId);
 
-        System.out.println("!!+++baordid" + dbBoard.getBoardId());
-        System.out.println("!!+++boardName" + dbBoard.getBoardName());
-        System.out.println("!!+++boarddesc" + dbBoard.getBoardDesc());
-        System.out.println("beford!!+++boardnum" + dbBoard.getBoardPostNum());
+        Board dbBoard = boardDaoI.findBoardByBoardId(boardId);
         dbBoard.setBoardPostNum(dbBoard.getBoardPostNum() + 1);
         boardDaoI.updateBoardByBoard(dbBoard);
 

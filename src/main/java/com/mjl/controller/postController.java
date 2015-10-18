@@ -5,9 +5,9 @@ import com.mjl.model.PO.Post;
 import com.mjl.service.BoardServiceI;
 import com.mjl.service.PostServiceI;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +39,13 @@ public class postController {
         return "post/postMain";
     }
 
-
+    @RequestMapping(value = "/PostContent-{postId}")
+    public String IntoBoard(@PathVariable int postId,HttpServletRequest request){
+        System.out.println("!!!!!");
+        Post post = postServiceI.ListPostContent(postId);
+        request.setAttribute("post", post);
+        return "post/postContent";
+    }
 
 
 }

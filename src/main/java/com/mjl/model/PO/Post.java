@@ -19,6 +19,19 @@ public class Post {
     private Timestamp postCreateTime;
     private Timestamp postUpdateTime;
 
+    /*
+    Post与User为一对一的关系
+     */
+    private  User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public int getPostId() {
         return postId;
     }

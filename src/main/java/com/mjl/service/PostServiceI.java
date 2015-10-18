@@ -7,4 +7,5 @@ import com.mjl.model.PO.Post;
  */
 public interface PostServiceI {
     public void addPostByPost(Post post);
+    public Post ListPostContent(int postId);
 }
