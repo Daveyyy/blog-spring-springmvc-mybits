@@ -21,7 +21,7 @@
         <result property="postUpdatetime" column="post_uptatetime"/>
     </resultMap>
 
-    <resultMap id="PostAndUserMap" type="Post">
+    <resultMap id="PostAndUserAndReplyMap" type="Post">
         <id property="postId" column="post_id"/>
         <result property="postBoardId" column="post_boardid"/>
         <result property="postUserName" column="post_username"/>
@@ -43,6 +43,15 @@
             <result property="credit" column="credit"/>
             <result property="lastLoginTime" column="last_logintime"/>
         </association>
+        <collection property="replies" ofType="Reply">
+            <id property="replyId" column="reply_id" />
+            <result property="replyPostId" column="reply_postid" />
+            <result property="replyUserName" column="reply_username" />
+            <result property="replyContent" column="reply_content" />
+            <result property="replyGoodCount" column="reply_goodcount" />
+            <result property="replyBadCount" column="reply_badcount" />
+            <result property="replyCreateTime" column="reply_createtime" />
+        </collection>
     </resultMap>
 
 
@@ -53,20 +62,21 @@
     </sql>
 
 
-    <select id="findPostByPostId" resultMap="PostAndUserMap">
+    <select id="findPostByPostId" resultMap="PostAndUserAndReplyMap">
         SELECT
         *
         FROM
-        t_post P,t_user U
+        t_post P,t_user U,t_reply R
         WHERE
         P.post_username = U.user_name
         AND
+        P.post_id = R.reply_postid
+        AND
         P.post_id = #{postId}
-
     </select>
-    
-    
-    
+
+
+
     <!--添加新帖子-->
     <insert id="addPost" parameterType="Post" keyProperty="postId" useGeneratedKeys="true">
 

@@ -41,8 +41,9 @@ public class postController {
 
     @RequestMapping(value = "/PostContent-{postId}")
     public String IntoBoard(@PathVariable int postId,HttpServletRequest request){
-        System.out.println("!!!!!");
+        System.out.println("11111111");
         Post post = postServiceI.ListPostContent(postId);
+
         request.setAttribute("post", post);
         return "post/postContent";
     }

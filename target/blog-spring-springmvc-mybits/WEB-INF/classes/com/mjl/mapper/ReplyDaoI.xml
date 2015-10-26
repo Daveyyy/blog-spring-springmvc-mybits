@@ -4,125 +4,90 @@
 
 
 
-<mapper namespace="com.mjl.dao.BoardDaoI">
-    <!--User结果集-->
-    <resultMap id="BoardMap" type="Board">
-        <id property="boardId" column="board_id"/>
-        <result property="boardName" column="board_name"/>
-        <result property="boardDesc" column="board_desc"/>
-        <result property="boardPostNum" column="board_postnum"/>
+<mapper namespace="com.mjl.dao.ReplyDaoI">
+
+    <resultMap id="ReplyMap" type="Reply">
+        <id property="replyId" column="reply_id"/>
+        <result property="replyPostId" column="reply_postid"/>
+        <result property="replyUserName" column="reply_username"/>
+        <result property="replyContent" column="reply_content"/>
+        <result property="replyGoodCount" column="reply_goodcount"/>
+        <result property="replyBadCount" column="reply_badcount"/>
+        <result property="replyCreateTime" column="reply_createtime"/>
     </resultMap>
 
-
-    <resultMap id="BoardAndPostMap" type="Board">
-        <id property="boardId" column="board_id"/>
-        <result property="boardName" column="board_name"/>
-        <result property="boardDesc" column="board_desc"/>
-        <result property="boardPostNum" column="board_postnum"/>
-        <collection property="posts" ofType="Post">
-            <id property="postId" column="post_id"/>
-            <result property="postBoardId" column="post_boardid"/>
-            <result property="postUserName" column="post_username"/>
-            <result property="postTitle" column="post_title"/>
-            <result property="postContent" column="post_content"/>
-            <result property="postGoodCount" column="post_goodcount"/>
-            <result property="postBadCount" column="post_badcount"/>
-            <result property="postViewCount" column="post_viewcount"/>
-            <result property="postReplyCount" column="post_replycount"/>
-            <result property="postStatus" column="post_status"/>
-            <result property="postCreateTime" column="post_createtime"/>
-            <result property="postUpdateTime" column="post_uptatetime"/>
+    <resultMap id="ReplyAndUserMap" type="Reply">
+        <id property="replyId" column="reply_id"/>
+        <result property="replyPostId" column="reply_postid"/>
+        <result property="replyUserName" column="reply_username"/>
+        <result property="replyContent" column="reply_content"/>
+        <result property="replyGoodCount" column="reply_goodcount"/>
+        <result property="replyBadCount" column="reply_badcount"/>
+        <result property="replyCreateTime" column="reply_createtime"/>
+        <collection property="user" ofType="User">
+            <id property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="passWord" column="password"/>
+            <result property="userPhone" column="user_phone"/>
+            <result property="userEmail" column="user_email"/>
+            <result property="userSex" column="user_sex"/>
+            <result property="createTime" column="create_time"/>
+            <result property="userType" column="user_type"/>
+            <result property="userState" column="user_state"/>
+            <result property="credit" column="credit"/>
+            <result property="lastLoginTime" column="last_logintime"/>
+            <result property="lastIp" column="last_ip"/>
         </collection>
     </resultMap>
 
-
-    <sql id="Board_columns">
-        board_id,board_name,board_desc,board_postnum
+    <sql id="Reply_columns">
+        reply_id,
+        reply_postid,
+        reply_username,
+        reply_content,
+        reply_goodcount,
+        reply_badcount,
+        reply_createtime
     </sql>
 
     <!--显示所有版块-->
-    <select id="listAllBoard" resultMap="BoardMap">
+    <select id="listAllReply" resultMap="ReplyMap">
         SELECT
-        <include refid="Board_columns"/>
+        <include refid="Reply_columns"/>
         FROM
-        t_board
+        t_reply
     </select>
 
 
     <!--通过版块Id查找版块-->
-    <select id="findBoardByBoardId" resultMap="BoardMap">
+    <select id="findReplyByReplyPostId" resultMap="ReplyAndUserMap">
         SELECT
-        <include refid="Board_columns"/>
+        <include refid="Reply_columns"/>
         FROM
-        t_board
+        t_reply
         WHERE
-        board_id = #{boardId}
+        reply_postid = #{replyPostId}
     </select>
 
-    <!--通过版块名称查找版块-->
-    <select id="findBoardByBoardName" resultMap="BoardMap">
-        SELECT
-        <include refid="Board_columns"/>
-        FROM
-        t_board
-        WHERE
-        board_id = #{boardName}
-    </select>
 
-    <!--显示版块和版块中的-->
-    <select id="listAllPostsOfBoard" resultMap="BoardAndPostMap">
-        SELECT
-        *
-        FROM t_board B,t_post P
-        WHERE B.board_id = P.post_boardid AND B.board_id = #{boardId}
-    </select>
-    
-    
-    
-    <!--添加新帖子-->
-    <insert id="addBoard" parameterType="Board" keyProperty="boardId" useGeneratedKeys="true">
 
-        INSERT  INTO t_board
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="boardName!=null">
-                board_name,
-            </if>
-            <if test="boardDesc!=null">
-                board_desc,
-            </if>
-            <if test="boardPostNum != null">
-                board_postnum
-            </if>
-        </trim>
-        <trim prefix="values(" suffix=")" suffixOverrides=",">
-            <if test="boardName!=null">
-                #{boardName},
-            </if>
-            <if test="boardDesc!=null">
-                #{boardDesc},
-            </if>
-            <if test="boardPostNum != null">
-                #{boardPostNum}
-            </if>
-        </trim>
+
+    <!--添加新回复-->
+    <insert id="addReply" parameterType="Reply" keyProperty="replyId" useGeneratedKeys="true">
+        INSERT  INTO t_reply
+        (reply_postid,
+        reply_username,
+        reply_content,
+        reply_createtime
+        )VALUES(
+        #{replyPostId},
+        #{replyUserName},
+        #{replyContent},
+        #{replyCreateTime}
+        )
     </insert>
 
-    <update id="updateBoardByBoard" parameterType="Board">
-        UPDATE
-        t_board
-        SET
-            <if test="boardName!=null">
-            board_name = #{boardName},
-            </if>
-            <if test="boardDesc!=null">
-            board_desc =  #{boardDesc},
-            </if>
-            <if test="boardPostNum != null">
-            board_postnum = #{boardPostNum,jdbcType=VARCHAR}
-            </if>
-        WHERE
-        board_id = #{boardId}
-    </update>
+
 
 
 </mapper>

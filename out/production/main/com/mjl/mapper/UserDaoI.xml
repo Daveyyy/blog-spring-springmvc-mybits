@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.mjl.dao.UserDaoI">
+    <!--User结果集-->
+    <resultMap id="userMap" type="User">
+      <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="passWord" column="password"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userSex" column="user_sex"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userType" column="user_type"/>
+        <result property="userState" column="user_state"/>
+        <result property="credit" column="credit"/>
+        <result property="lastLoginTime" column="last_logintime"/>
+        <result property="lastIp" column="last_ip"/>
+    </resultMap>
+
+
+
+    <sql id="user_columns">
+        user_id,user_name,password,user_phone,user_email,user_sex,create_time,user_type,user_state,credit,last_logintime,last_ip
+    </sql>
+
+
+    <!--通过用户名查找用户-->
+    <select id="findUserByUserName" parameterType="string" resultMap="userMap">
+        SELECT
+         <include refid="user_columns"/>
+         FROM
+        t_user
+        WHERE
+        user_name=#{username}
+    </select>
+    <!--通过用户ID查找用户-->
+    <select id="findUserByUserId" parameterType="int" resultType="com.mjl.model.PO.User">
+        SELECT
+        <include refid="user_columns"/>
+        FROM
+        t_user
+        WHERE
+        user_id=#{userId}
+    </select>
+
+    <!--插入用户信息-->
+    <insert id="addUser" parameterType="User" keyProperty="userId" useGeneratedKeys="true">
+        INSERT  INTO t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName!=null">
+                user_name,
+            </if>
+            <if test="passWord!=null">
+                password,
+            </if>
+            <if test="userPhone != null">
+                user_phone,
+            </if>
+            <if test="userEmail!=null">
+                user_email,
+            </if>
+            <if test="userSex!=null">
+                user_sex,
+            </if>
+            <if test="createTime!=null">
+                create_time,
+            </if>
+            <if test="lastLoginTime != null and lastLoginTime != '' ">
+                last_logintime,
+            </if>
+            <if test="lastIp != null and lastIp != '' ">
+                last_ip
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+          <if test="userName!=null">
+              #{userName,jdbcType=VARCHAR},
+         </if>
+         <if test="passWord!=null">
+             #{passWord,jdbcType=VARCHAR},
+         </if>
+            <if test="userPhone != null">
+                #{userPhone,jdbcType=VARCHAR},
+            </if>
+          <if test="userEmail!=null">
+             #{userEmail,jdbcType=VARCHAR},
+          </if>
+          <if test="userSex != null">
+              #{userSex,jdbcType=VARCHAR},
+          </if>
+         <if test="createTime!=null">
+            #{createTime,jdbcType=TIMESTAMP},
+          </if>
+            <if test="lastLoginTime != null and lastLoginTime != '' ">
+              #{lastLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastIp != null and lastIp != '' ">
+                #{lastIp,jdbcType=VARCHAR}
+            </if>
+    </trim>
+    </insert>
+
+    <!--删除用户信息-->
+    <delete id="deleteUserByUserName" parameterType="string">
+        DELETE FROM
+        t_user
+        WHERE
+        user_name = #{userName}
+    </delete>
+
+    <update id="updateUserByUserName"  parameterType="User">
+        UPDATE t_user
+        SET
+        <if test="passWord != null and passWord != '' ">
+            password= #{passWord,jdbcType=VARCHAR},
+        </if>
+        <if test="userPhone != null and userPhone != ''">
+            user_phone= #{userPhone,jdbcType=VARCHAR},
+        </if>
+        <if test="userEmail != null and userEmail != '' ">
+            user_email=#{userEmail},
+        </if>
+        <if test="userSex != null and userSex != '' ">
+            user_sex=#{userSex},
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            create_time=#{createTime},
+        </if>
+        <if test="credit != null and credit != '' ">
+            credit=#{credit},
+        </if>
+        <if test="lastLoginTime != null and lastLoginTime != '' ">
+            last_logintime=#{lastLoginTime},
+        </if>
+        <if test="lastIp != null and lastIp != '' ">
+            last_ip=#{lastIp}
+        </if>
+        WHERE
+        user_name=#{userName,jdbcType=VARCHAR}
+
+    </update>
+
+
+</mapper>

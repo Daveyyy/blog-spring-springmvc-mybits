@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>帖子内容</title>
+  <title>帖子内容</title>
 </head>
 <body>
 <div class="main">
@@ -47,35 +47,55 @@
       </div>
       <div class="content-main">
         <table border="2" align="center">
-            <tr >
-              <td><font color="red">帖子名称:</font></td>
-              <td><font color="red">${post.postTitle}</font></td>
-            </tr>
-            <tr>
+          <tr >
+            <td><font color="red">帖子名称:</font></td>
+            <td><font color="red">${post.postTitle}</font></td>
+          </tr>
+          <tr>
           <tr >
             <td><font color="red">帖子内容:</font></td>
             <td><font color="red">${post.postContent}</font></td>
           </tr>
 
           <c:choose>
-          <c:when test="${username==post.user.userName}">
-          <tr>
-              <td>
-                <a href="">修改</a>
-              </td>
-              <td>
-                <a href="">删除</a>
-              </td>
-            </tr>
-          </c:when>
-          <c:when test="${username!=post.user.userName}">
-            <tr>
-              <td>
-                <a href="">回复</a>
-              </td>
-            </tr>
-          </c:when>
-        </c:choose>
+            <c:when test="${username==post.user.userName}">
+              <tr>
+                <td>
+                  <a href="">修改</a>
+                </td>
+                <td>
+                  <a href="">删除</a>
+                </td>
+                <td>
+                  <a href="">回复</a>
+                </td>
+              </tr>
+            </c:when>
+            <c:when test="${username!=post.user.userName}">
+              <tr>
+                <td>
+                  <a href="<%=basePath%>view/reply/reply.jsp?replypostid=${post.postId}&replyusername=${username}">回复</a>
+                </td>
+              </tr>
+            </c:when>
+          </c:choose>
+
+          <c:forEach items="${post.replies}" var="reply">
+            <table border="2" align="center">
+              <tr>
+                <td >用户名:</td>
+                <td><a href="">${reply.replyUserName}</a> </td>
+              </tr>
+
+              <tr>
+                <td >回复内容:</td>
+                <td style="height:70px;width:800px">${reply.replyContent}</td>
+              </tr>
+              <br><br>
+            </table>
+
+
+          </c:forEach>
         </table>
       </div>
     </div>

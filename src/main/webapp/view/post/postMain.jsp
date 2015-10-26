@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>版块内容</title>
+  <title>版块内容</title>
 </head>
 <body>
 <div class="main">
@@ -44,7 +44,7 @@
         <div style='flaot:left;'><font color="red">&nbsp&nbsp${board.boardName}</font></div>
         <div style='flaot:right;'><a href="<%=basePath%>view/post/addPost.jsp?userName=${username}&boardId=${board.boardId}"><button>发表文章</button></a></div>
         <div style="clear:both"></div>
-        </div>
+      </div>
       <div class="content-main">
         <table border="2" align="center">
           <c:forEach items="${board.posts}" var="posts" varStatus="status">

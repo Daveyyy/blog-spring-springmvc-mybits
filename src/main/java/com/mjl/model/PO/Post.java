@@ -1,6 +1,7 @@
 package com.mjl.model.PO;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Alvin on 15/10/12.
@@ -23,6 +24,20 @@ public class Post {
     Post与User为一对一的关系
      */
     private  User user;
+    /*
+    post与reply是一对多关系
+     */
+
+    private List<Reply> replies;
+
+
+    public List<Reply> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Reply> replies) {
+        this.replies = replies;
+    }
 
     public User getUser() {
         return user;
